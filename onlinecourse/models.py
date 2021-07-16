@@ -76,6 +76,9 @@ class Lesson(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     content = models.TextField()
 
+    def __str__(self):
+        return str(self.pk)
+
 
 # Enrollment model
 # <HINT> Once a user enrolled a class, an enrollment entry should be created between the user and course
@@ -109,10 +112,17 @@ class Question(models.Model):
         else:
             return False
 
+    def __str__(self):
+        return str(self.pk)
+
+
 class Choice(models.Model):
     question = models.ManyToManyField(Question)
     choice_text = models.CharField(null=False, max_length=200)
     is_correct = models.BooleanField(default=True)
+
+    def __str__(self):
+        return str(self.pk)
 
 class Submission(models.Model):
     enrollment = models.ForeignKey(Enrollment, on_delete=CASCADE)
