@@ -78,15 +78,21 @@
         {% endfor %}
       </div>
 
+      <button
+        class="btn btn-primary btn-block"
+        data-toggle="collapse"
+        data-target="#exam"
+      >
+        Start Exam
+      </button>
+
       <div id="exam" class="collapse">
         {% if user.is_authenticated %}
-        <div class="card-columns-vertical">
+        <form id="questionform" action="point to a submit view" method="post">
           {% for question in course.question_set.all %}
           <div class="card mt-1">
             <div class="card-header">
-              <h5>
-                Question {{question.order|add:1}}: {{question.question_text}}
-              </h5>
+              <h5>{{question.question_text}}</h5>
             </div>
             {% csrf_token %}
             <div class="form-group">
@@ -111,7 +117,7 @@
             </div>
           </div>
           {% endfor %}
-        </div>
+        </form>
         {% endif %}
       </div>
       <!-- Task: show questions and choices -->
