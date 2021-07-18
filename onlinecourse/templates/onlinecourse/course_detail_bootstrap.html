@@ -81,7 +81,7 @@
       <div id="exam" class="collapse">
         {% if user.is_authenticated %}
         <div class="card-columns-vertical">
-          {% for question in lesson.question_set.all %}
+          {% for question in course.question_set.all %}
           <div class="card mt-1">
             <div class="card-header">
               <h5>
@@ -90,7 +90,7 @@
             </div>
             {% csrf_token %}
             <div class="form-group">
-              {% for choice in question.choice_set.all%}
+              {% for choice in question.choice_set.all %}
               <div class="form-check">
                 <label class="form-check-label">
                   <input
